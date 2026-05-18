@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<div class="page-heading dashboard-hero hero-executive">
+  <div class="hero-copy">
+    <span class="hero-eyebrow">Clase 2</span>
+    <h1>PostgreSQL + ORM</h1>
+    <p>Modelado de datos, migraciones y autenticacion persistente.</p>
+  </div>
+  <div class="hero-summary">
+    <div class="summary-chip">
+      <i class="fa-solid fa-database"></i><span>Persistencia real</span>
+    </div>
+  </div>
+</div>
+<section class="kpi-grid compact">
+  {% for kpi in kpis %}
+  <article class="kpi-card tone-{{ kpi.tone }}">
+    <div class="kpi-icon"><i class="fa-solid {{ kpi.icon }}"></i></div>
+    <div><span>{{ kpi.title }}</span><strong>{{ kpi.value }}</strong></div>
+  </article>
+  {% endfor %}
+</section>
+<section class="table-card">
+  <div class="section-title">
+    <h2>Archivos clave</h2>
+    <span>Clase 2</span>
+  </div>
+  <ul class="mb-0">
+    <li>app/models.py</li>
+    <li>app/__init__.py</li>
+    <li>migrations/</li>
+    <li>auth/routes.py</li>
+  </ul>
+</section>
+{% endblock %}
