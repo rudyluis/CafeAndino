@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading dashboard-hero hero-executive">
+    <div class="hero-copy">
+        <span class="hero-eyebrow">Clase 1</span>
+        <h1>Arquitectura Flask + Login</h1>
+        <p>Primera entrega del sistema: autenticacion, blueprint y vista protegida.</p>
+    </div>
+    <div class="hero-summary">
+        <div class="summary-chip"><i class="fa-solid fa-shield-halved"></i><span>Acceso controlado</span></div>
+        <div class="summary-grid">
+            <div><strong>Login</strong><span>Flask-WTF</span></div>
+            <div><strong>Sesion</strong><span>Flask-Login</span></div>
+            <div><strong>Layout</strong><span>SaaS base</span></div>
+        </div>
+    </div>
+</div>
+<section class="kpi-grid compact">
+    {% for kpi in kpis %}
+    <article class="kpi-card tone-{{ kpi.tone }}">
+        <div class="kpi-icon"><i class="fa-solid {{ kpi.icon }}"></i></div>
+        <div><span>{{ kpi.title }}</span><strong>{{ kpi.value }}</strong></div>
+    </article>
+    {% endfor %}
+</section>
+<section class="table-card">
+  <div class="section-title"><h2>Puntos trabajados en clase</h2><span>Avance 1</span></div>
+  <ul class="mb-0">
+    <li>Estructura modular con <strong>Blueprints</strong></li>
+    <li>Formulario de acceso con <strong>Flask-WTF</strong></li>
+    <li>Sesion protegida con <strong>Flask-Login</strong></li>
+    <li>Herencia de templates y layout tipo SaaS</li>
+  </ul>
+</section>
+{% endblock %}

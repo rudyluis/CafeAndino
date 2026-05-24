@@ -90,36 +90,6 @@ def register_cli(app: Flask) -> None:
         db.session.commit()
         click.echo(f"Usuario admin {action}: {username}")
 
-    @app.cli.command("create-user")
-    @click.option("--username", prompt="Usuario")
-    @click.option("--email", prompt="Correo")
-    @click.option("--password", prompt="Password", hide_input=True, confirmation_prompt=True)
-    @click.option("--full-name", prompt="Nombre completo")
-    @click.option("--rol", default="usuario", show_default=True)
-    def create_user_command(username: str, email: str, password: str, full_name: str, rol: str):
-        """Create or update a normal system user."""
-        from app.models import Usuario
-
-        if not password:
-            raise click.ClickException("El password no puede estar vacío.")
-
-        user = Usuario.query.filter_by(username=username).first()
-        action = "actualizado"
-
-        if user is None:
-            user = Usuario(username=username)
-            db.session.add(user)
-            action = "creado"
-
-        user.nombre_completo = full_name
-        user.email = email
-        user.password_hash = generate_password_hash(password)
-        user.rol = rol
-        user.estado = "activo"
-        db.session.commit()
-        click.echo(f"Usuario {action}: {username} | rol={rol}")
-
-
     @app.cli.command("import-csv")
     @click.option("--path", "csv_path", default="dataset_cafe_andino.csv", show_default=True)
     def import_csv_command(csv_path: str):
