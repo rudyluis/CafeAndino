@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading dashboard-hero hero-executive">
+  <div class="hero-copy"><span class="hero-eyebrow">Clase 3</span><h1>CSV + Services + OLAP basico</h1><p>Carga del dataset, deduplicacion y primeras agregaciones analiticas.</p></div>
+  <div class="hero-summary"><div class="summary-chip"><i class="fa-solid fa-file-csv"></i><span>Importacion y resumen</span></div></div>
+</div>
+<section class="kpi-grid compact">{% for kpi in kpis %}<article class="kpi-card tone-{{ kpi.tone }}"><div class="kpi-icon"><i class="fa-solid {{ kpi.icon }}"></i></div><div><span>{{ kpi.title }}</span><strong>{{ kpi.value }}</strong></div></article>{% endfor %}</section>
+<section class="table-card"><div class="section-title"><h2>Ventas por categoria</h2><span>Consulta GROUP BY</span></div><table class="table"><thead><tr><th>Categoria</th><th>Total neto</th></tr></thead><tbody>{% for row in resumen %}<tr><td>{{ row[0] }}</td><td>{{ row[1]|money }}</td></tr>{% endfor %}</tbody></table></section>
+{% endblock %}
